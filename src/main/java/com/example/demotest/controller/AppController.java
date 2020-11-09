@@ -2,9 +2,12 @@ package com.example.demotest.controller;
 
 import com.example.demotest.service.ContactService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping
 public class AppController {
     private final ContactService contactService;
 
@@ -18,13 +21,9 @@ public class AppController {
     }
 
     @GetMapping("/user")
-    public String getUserPage() {
+    public String getUserPage(Model model) {
+        model.addAttribute("contacts", contactService.getAll());
         return "user";
-    }
-
-    @GetMapping("/admin")
-    public String getAdminPage() {
-        return "admin";
     }
 
     @GetMapping("/denied")
@@ -32,16 +31,10 @@ public class AppController {
         return "denied";
     }
 
-//    @GetMapping("/test")
-//    public String test() {
-////        Contact contact = new Contact();
-////        contact.setName("John");
-////        contact.setSurname("Doe");
-////        contact.setPhone("0677777777");
-////        repository.save(contact);
-////        return repository.findById(1L).get().toString();
-//
-//        contactService.inject();
-//        return contactService.getContact(1L).toString();
-//    }
+    @GetMapping("/inject")
+    public String test(Model model) {
+        contactService.inject();
+        model.addAttribute("message", "Data was successfully injected!");
+        return "index";
+    }
 }

@@ -1,12 +1,10 @@
 package com.example.demotest.config;
 
 import java.sql.Types;
-
 import org.hibernate.dialect.Dialect;
-import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.dialect.function.SQLFunctionTemplate;
+import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.dialect.function.VarArgsSQLFunction;
-import org.hibernate.Hibernate;
 import org.hibernate.type.StringType;
 
 public class SQLDialect extends Dialect {
@@ -63,7 +61,8 @@ public class SQLDialect extends Dialect {
     }
 
     protected String getLimitString(String query, boolean hasOffset) {
-        return new StringBuffer(query.length() + 20).append(query).append(hasOffset ? " limit ? offset ?" : " limit ?")
+        return new StringBuffer(query.length() + 20).append(query)
+                .append(hasOffset ? " limit ? offset ?" : " limit ?")
                 .toString();
     }
 
@@ -116,16 +115,20 @@ public class SQLDialect extends Dialect {
     }
 
     public String getDropForeignKeyString() {
-        throw new UnsupportedOperationException("No drop foreign key syntax supported by SQLiteDialect");
+        throw new UnsupportedOperationException("No drop foreign key syntax supported "
+                + "by SQLiteDialect");
     }
 
-    public String getAddForeignKeyConstraintString(String constraintName, String[] foreignKey, String referencedTable,
-                                                   String[] primaryKey, boolean referencesPrimaryKey) {
-        throw new UnsupportedOperationException("No add foreign key syntax supported by SQLiteDialect");
+    public String getAddForeignKeyConstraintString(String constraintName, String[] foreignKey,
+                                                   String referencedTable, String[] primaryKey,
+                                                   boolean referencesPrimaryKey) {
+        throw new UnsupportedOperationException("No add foreign key syntax supported by"
+                + " SQLiteDialect");
     }
 
     public String getAddPrimaryKeyConstraintString(String constraintName) {
-        throw new UnsupportedOperationException("No add primary key syntax supported by SQLiteDialect");
+        throw new UnsupportedOperationException("No add primary key syntax supported by "
+                + "SQLiteDialect");
     }
 
     public boolean supportsIfExistsBeforeTableName() {

@@ -7,6 +7,7 @@
 </head>
 <body class="container-lg">
 <h1>This is a main page</h1>
+<h3 style="color: green">${message}</h3>
 <br/>
 <div class="btn-group-vertical">
     <a class="btn-success btn-lg" href="${pageContext.request.contextPath}/login">Login</a>
@@ -14,6 +15,8 @@
     <a class="btn-info btn-lg" href="${pageContext.request.contextPath}/admin">Admin page</a>
     <br/>
     <a class="btn-info btn-lg" href="${pageContext.request.contextPath}/user">User page</a>
+    <br/>
+    <a class="btn-info btn-lg" href="${pageContext.request.contextPath}/inject">Inject test data</a>
     <br/>
     <a class="btn-danger btn-lg" href="${pageContext.request.contextPath}/logout">Logout</a>
 </div>
