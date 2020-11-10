@@ -2,6 +2,7 @@ package com.example.demotest.controller;
 
 import com.example.demotest.entity.Contact;
 import com.example.demotest.service.ContactService;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
+@Log4j
 public class AdminController {
     private final ContactService contactService;
 
@@ -28,7 +30,7 @@ public class AdminController {
     @PostMapping("/admin/create")
     public String createContact(@ModelAttribute("contact") Contact contact, Model model) {
         contactService.create(contact);
-        model.addAttribute("message", "Contact " + contact.getName() + " was created!");
+        log.info("Created new contact: " + contact);
         return "redirect:/admin";
     }
 
@@ -36,14 +38,14 @@ public class AdminController {
     public String updateContact(@PathVariable Long id,
                                 @ModelAttribute("contact") Contact contact, Model model) {
         contactService.update(id, contact);
-        model.addAttribute("message", "Contact " + contact.getName() + " was updated!");
+        log.info("Updated contact: " + contact);
         return "redirect:/admin";
     }
 
     @GetMapping("/admin/delete/{id}")
     public String deleteContact(@PathVariable Long id, Model model) {
         contactService.delete(id);
-        model.addAttribute("message", "Contact was deleted!");
+        log.info("Deleted contact with id: " + id);
         return "redirect:/admin";
     }
 }

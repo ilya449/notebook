@@ -12,8 +12,7 @@
     <c:forEach var="contact" items="${contacts}">
         <div class="row h-40 p-3 shadow-sm">
             <div class="col-md-2">
-<%--                <c:out value="${contact.photo}"/>--%>
-                <label>Here will be a photo</label>
+                <img src="src/main/webapp/WEB-INF/1.jpg">
             </div>
             <div class="col-md-10">
                 <div class="row">
