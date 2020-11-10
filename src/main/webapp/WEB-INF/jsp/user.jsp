@@ -8,9 +8,32 @@
 <body class="container-lg">
 <h1>This is a user page</h1>
 <br/>
-<div>
-
+<div class="container h-100 border pre-scrollable">
+    <c:forEach var="contact" items="${contacts}">
+        <div class="row h-40 p-3 shadow-sm">
+            <div class="col-md-2">
+                <img src="src/main/webapp/WEB-INF/1.jpg">
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="form-group p-2">
+                        <label>Name</label>
+                        <input readonly value="${contact.name}">
+                    </div>
+                    <div class="form-group p-2">
+                        <label>Surname</label>
+                        <input readonly value="${contact.surname}">
+                    </div>
+                    <div class="form-group p-2">
+                        <label>Phone number</label>
+                        <input readonly value="${contact.phoneNumber}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </c:forEach>
 </div>
+<br/>
 <div class="btn-group-vertical">
     <a class="btn-info btn-lg" href="${pageContext.request.contextPath}/">Main page</a>
     <br/>
