@@ -14,7 +14,7 @@
         <form class="row h-30 p-3 shadow-sm form-group"
               method="post" action="${pageContext.request.contextPath}/admin/update/${contact.id}" modelAttribute="contact">
             <div class="col-md-3 display-1 block">
-                <img src="src/main/webapp/WEB-INF/1.jpg">
+                <img src="">
             </div>
             <div class="col-md-9">
                 <div class="row form-group">
